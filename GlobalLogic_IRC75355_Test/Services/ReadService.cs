@@ -7,7 +7,7 @@ namespace GlobalLogic_IRC75355_Test.Services
     {
         private string _inputString;
         
-        public void Read(string pathToSource)
+        public string Read(string pathToSource)
         {
             try
             {
@@ -23,12 +23,10 @@ namespace GlobalLogic_IRC75355_Test.Services
             catch(FileNotFoundException e)
             {
                 Console.WriteLine("Error: FileNotFound");
+                Environment.Exit(1);
             }
 
-            Console.WriteLine(_inputString);
-            Console.WriteLine("\n");
-            
-            
+            return _inputString;
         }
     }
 }
