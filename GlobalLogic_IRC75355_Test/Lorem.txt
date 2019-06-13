@@ -1,3 +1,4 @@
-Lorem, ipsum dolor/
+lorem, ipsum dolor/ dolor
 ipsum %dolor
-dolor lorem. Lorem
+dolor lorem. lorem
+dolor ipsum
