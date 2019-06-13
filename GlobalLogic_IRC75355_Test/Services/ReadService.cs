@@ -15,17 +15,14 @@ namespace GlobalLogic_IRC75355_Test.Services
                 {
                     throw new FileNotFoundException();
                 }
-                else
-                {
-                    _inputString = File.ReadAllText(pathToSource);
-                }
+                
+                _inputString = File.ReadAllText(pathToSource);
             }
-            catch(FileNotFoundException e)
+            catch(Exception e)
             {
-                Console.WriteLine("Error: FileNotFound");
-                Environment.Exit(1);
+                Console.WriteLine(e);
+                throw;
             }
-
             return _inputString;
         }
     }

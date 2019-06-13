@@ -1,0 +1,4 @@
+dolor: 1, 2, 3
+ipsum: 1, 2
+lorem: 3
+lorem: 1, 3

@@ -38,7 +38,6 @@ namespace GlobalLogic_IRC75355_Test.Services
                         _words[index].LineNumbers.Add(word.LineNumbers[0]);
                     }
                 }
-
                 word = nextWord();
             }
         }

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using GlobalLogic_IRC75355_Test.Controllers;
 using GlobalLogic_IRC75355_Test.Models;
 using GlobalLogic_IRC75355_Test.Services;
 
@@ -12,25 +10,20 @@ namespace GlobalLogic_IRC75355_Test.Controllers
         private IReadService _readService;
         private ISplitService _splitService;
         private List<Word> _words = new List<Word>();
+        private IWriteService _writeService;
         
-        public Controller(IReadService readService, ISplitService splitService)
+        public Controller(IReadService readService, ISplitService splitService, IWriteService writeService)
         {
             _readService = readService;
             _splitService = splitService;
+            _writeService = writeService;
         }
         
-        public void Execute(string pathToSource)
+        public void Execute(string pathToFolder, string sourceFileName, string resultFileName)
         {
-            _inputString =_readService.Read(pathToSource);
+            _inputString =_readService.Read(pathToFolder + sourceFileName);
             _words = _splitService.Split(_inputString);
-            
-            foreach (var word in _words)
-            {
-                Console.Write(word.Value);
-                Console.Write(": ");
-                Console.Write(String.Join(", ", word.LineNumbers.ToArray()));
-                Console.WriteLine();
-            }
+            _writeService.Write(_words, pathToFolder, resultFileName);
         }
     }
 }
