@@ -1,4 +1,6 @@
 ﻿using System;
+using GlobalLogic_IRC75355_Test.Controllers;
+using GlobalLogic_IRC75355_Test.Services;
 
 namespace GlobalLogic_IRC75355_Test
 {
@@ -6,7 +8,11 @@ namespace GlobalLogic_IRC75355_Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var pathToSource = @"C:\Users\Serg\RiderProjects\GlobalLogic_IRC75355_Test\GlobalLogic_IRC75355_Test\Lorem.txt";
+            
+            IController ctr = new Controller(new ReadService());
+            
+            ctr.Execute(pathToSource);
         }
     }
 }
