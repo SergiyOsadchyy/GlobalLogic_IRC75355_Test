@@ -10,7 +10,7 @@ namespace GlobalLogic_IRC75355_Test
         {
             var pathToSource = @"C:\Users\Serg\RiderProjects\GlobalLogic_IRC75355_Test\GlobalLogic_IRC75355_Test\Lorem.txt";
             
-            IController ctr = new Controller(new ReadService());
+            IController ctr = new Controller(new ReadService(), new SplitService());
             
             ctr.Execute(pathToSource);
         }
