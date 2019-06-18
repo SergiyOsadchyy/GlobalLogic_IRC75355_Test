@@ -1,28 +1,28 @@
+using System;
 using System.Collections.Generic;
-using GlobalLogic_IRC75355_Test.Models;
 using GlobalLogic_IRC75355_Test.Services;
 
 namespace GlobalLogic_IRC75355_Test.Controllers
 {
     public class Controller : IController
     {
-        private string _inputString;
+        private string[] _lines;
         private IReadService _readService;
         private ISplitService _splitService;
-        private List<Word> _words = new List<Word>();
+        private Dictionary<string, List<int>> _words;
         private IWriteService _writeService;
         
-        public Controller(IReadService readService, ISplitService splitService, IWriteService writeService)
+        public Controller()
         {
-            _readService = readService;
-            _splitService = splitService;
-            _writeService = writeService;
+            _readService = new ReadService();
+            _splitService = new SplitService();
+            _writeService = new WriteService();
         }
         
         public void Execute(string pathToFolder, string sourceFileName, string resultFileName)
         {
-            _inputString =_readService.Read(pathToFolder + sourceFileName);
-            _words = _splitService.Split(_inputString);
+            _lines =_readService.Read(pathToFolder + sourceFileName);
+            _words = _splitService.Split(_lines);
             _writeService.Write(_words, pathToFolder, resultFileName);
         }
     }

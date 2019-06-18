@@ -11,7 +11,7 @@ namespace GlobalLogic_IRC75355_Test
             var sourceFileName = "Lorem.txt";
             var resultFileName = "resultLorem.txt";
 
-            IController ctr = new Controller(new ReadService(), new SplitService(), new WriteService());
+            IController ctr = new Controller();
             
             ctr.Execute(pathToFolder, sourceFileName, resultFileName);
         }
